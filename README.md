@@ -1,66 +1,127 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# laravel_task_management
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Description
 
-## About Laravel
+This is a simple Task Management application built with Laravel. The application allows users to create, edit, mark as complete, and delete tasks. It features separate tables for incomplete and completed tasks, and tasks are timestamped with their creation and last update times.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Create, show, edit, and delete tasks
+- Create task by title (required field) and description(optional field)
+- Mark tasks as complete or incomplete
+- Separate tables for incomplete and completed tasks
+- Timestamped records (created at and updated at)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Technologies Used
 
-## Learning Laravel
+- Laravel 11.7.0
+- PHP 8.2.4
+- Bootstrap 4
+- SQLite (for local development)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Setup Instructions
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP >= 7.3
+- Composer
+- Git
 
-## Laravel Sponsors
+### Steps to Set Up the Development Environment
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Clone the Repository**
 
-### Premium Partners
+    ```bash
+    git clone https://github.com/your-username/laravel_task_management.git
+    cd laravel_task_management
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. **Install Dependencies**
+
+    ```bash
+    composer install
+    npm install
+    ```
+
+3. **Set Up Environment Variables**
+
+    Copy the `.env.example` file to `.env`:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+    Update the `.env` file to use SQLite for local development. Update the following lines:
+
+    ```env
+    DB_CONNECTION=sqlite
+    DB_DATABASE=/full/path/to/your/database.sqlite
+    ```
+
+    Create the SQLite database file:
+
+    ```bash
+    touch /full/path/to/your/database.sqlite
+    ```
+    For mysql (Project can also be run in mysql):
+   
+        # DB_CONNECTION=mysql
+        # DB_HOST=127.0.0.1
+        # DB_PORT=3306
+        # DB_DATABASE=to_do_app
+        # DB_USERNAME=root
+        # DB_PASSWORD=
+
+5. **Generate Application Key**
+
+    ```bash
+    php artisan key:generate
+    ```
+
+6. **Run Migrations**
+
+    ```bash
+    php artisan migrate
+    ```
+
+7. **Start the Development Server**
+
+    ```bash
+    php artisan serve
+    ```
+
+    The application will be available at `http://localhost:8000`.
+
+## Usage Instructions
+
+1. **Create a Task**
+
+    Navigate to `http://127.0.0.1:8000/` and fill out the form to create a new task by filling title (required) and description (optional) input.
+
+2. **View Tasks**
+
+    Navigate to `http://127.0.0.1:8000/view` to view all tasks. Incomplete tasks will be listed first, followed by completed tasks.
+
+3. **Edit a Task**
+
+    Click the "Edit" button which is in tasks table action field next to a task to update its details.
+
+4. **Mark a Task as Complete**
+
+    Click the "Complete" button next to an incomplete task to mark it as complete. This will move the task to the completed tasks table and same for the completed tasks to mark as incomplete.
+
+5. **Delete a Task**
+
+    Click the "Delete" button next to a task to remove it from the list.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+We welcome contributions! Please fork the repository and submit pull requests for any enhancements or bug fixes.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-source and available.
+
+## Contact
+
+For any questions or feedback, please contact [oliahammed65@gmail.com](mailto:oliahammed65@gmail.com).
